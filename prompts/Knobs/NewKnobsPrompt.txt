@@ -1,0 +1,251 @@
+I changed the usage of @storybook/addon-knobs to @storybook/addon-controls by changing this file
+Remove the import from @storybook/addon-knobs.
+```
+import {action} from '@storybook/addon-actions';
+import {text, boolean, select} from '@storybook/addon-knobs';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import RadioGroupControl from './index.react.js';
+import RadioControl from '../RadioControl/index.react.js';
+
+export const COMPONENT_THEMES = ['core', 'dna', 'health', 'oldnews'];
+
+# RadioGroupControl
+
+## business/components/FormControls/RadioGroupControl
+
+Form control component for radio input in a form, displays labeled and styled radio wrapped with form control
+
+<Meta title="Core/Form/RadioGroup/RadioGroupControl" component={RadioGroupControl} />
+
+<Preview>
+    <Story name="Default">
+        <RadioGroupControl
+            name={text('name', 'gender')}
+            defaultValue={text('defaultValue', '')}
+            size={select('size', [SIZE_SMALL, SIZE_MEDIUM], SIZE_MEDIUM)}
+            variant={select('variant', [VARIANT_GRAY, undefined], undefined)}
+            disabled={boolean('disabled', false)}
+            className={text('className', 'className')}
+            dataAutomations={text('dataAutomations', 'dataAutomations')}
+            onChange={action('onChange')}
+        >
+            <RadioControl value="male" label="Male" />
+            <RadioControl value="female" label="Female" />
+        </RadioGroupControl>
+    </Story>
+</Preview>
+
+#### Sizes
+
+<Preview>
+    <Story name="Sizes">
+        <VariantsStory variants={[SIZE_MEDIUM, SIZE_SMALL]} style={{marginRight: 50}}>
+            {size => (
+                <div style={{marginTop: 20}}>
+                    <RadioGroupControl name={`gender_${size}`} defaultValue="male" size={size}>
+                        <RadioControl value="male" label="Male" />
+                        <RadioControl value="female" label="Female" />
+                    </RadioGroupControl>
+                </div>
+            )}
+        </VariantsStory>
+    </Story>
+</Preview>
+
+#### Messages
+
+Messages should be fixed and passed to the RadioGroupControl (not to the RadioControl).
+This should be done as part of the alignment implementation.
+
+<Preview>
+    <Story name="Messages">
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div style={{marginRight: 50}}>
+                <Paragraph level={2} style={{marginBottom: 20}}>
+                    Info
+                </Paragraph>
+                <RadioGroupControl name="gender_info">
+                    <RadioControl value="male" label="Male" />
+                    <RadioControl value="female" label="Female" info="Please select an option" />
+                </RadioGroupControl>
+            </div>
+            <div>
+                <Paragraph level={2} style={{marginBottom: 20}}>
+                    Error
+                </Paragraph>
+                <RadioGroupControl name="gender_error">
+                    <RadioControl value="male" label="Male" error />
+                    <RadioControl value="female" label="Female" error="This field is mandatory" />
+                </RadioGroupControl>
+            </div>
+        </div>
+    </Story>
+</Preview>
+
+#### Themes
+
+<Preview>
+    <Story name="Themes">
+        <VariantsStory variants={COMPONENT_THEMES} style={{marginRight: 50}}>
+            {theme => (
+                <ThemeProvider as="div" theme={theme} style={{marginTop: 20}}>
+                    <RadioGroupControl name={`gender_${theme}`} defaultValue="male">
+                        <RadioControl value="male" label="Male" />
+                        <RadioControl value="female" label="Female" />
+                    </RadioGroupControl>
+                </ThemeProvider>
+            )}
+        </VariantsStory>
+    </Story>
+</Preview>
+
+#### Variants
+
+<Preview>
+    <Story name="Variants">
+        <VariantsStory variants={[VARIANT_GRAY]} style={{marginRight: 50}}>
+            {variant => (
+                <div style={{marginTop: 20}}>
+                    <RadioGroupControl name={`gender_${variant}`} defaultValue="male" variant={variant}>
+                        <RadioControl value="male" label="Male" />
+                        <RadioControl value="female" label="Female" />
+                    </RadioGroupControl>
+                </div>
+            )}
+        </VariantsStory>
+    </Story>
+</Preview>
+
+<Props of={RadioGroupControl} />
+```
+to this
+```
+import {Meta, Story, Preview, Props, ArgsTable} from '@storybook/addon-docs/blocks';
+
+export const COMPONENT_THEMES = ['core', 'dna', 'health', 'oldnews'];
+
+
+# RadioGroupControl
+
+## business/components/FormControls/RadioGroupControl
+
+Form control component for radio input in a form, displays labeled and styled radio wrapped with form control
+
+<Meta title="Core/Form/RadioGroup/RadioGroupControl" component={RadioGroupControl} />
+
+export const RenderRadioGroupStory = ({...args}) => (
+    <RadioGroupControl {...args}>
+        <RadioControl value="male" label="Male" />
+        <RadioControl value="female" label="Female" />
+    </RadioGroupControl>
+);
+
+Default
+
+<Story
+    name="Default"
+    args={{
+        name: 'gender',
+        defaultValue: '',
+        size: SIZE_MEDIUM,
+        variant: VARIANT_GRAY,
+        disabled: false,
+        className: 'className',
+        dataAutomations: 'dataAutomations',
+        onChange: () => console.log('onChange'),
+    }}
+>
+    {RenderRadioGroupStory.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+#### Sizes
+
+export const RadioGroupSizesStory = ({...args}) => (
+    <VariantsStory variants={[SIZE_MEDIUM, SIZE_SMALL]} style={{marginRight: 50}}>
+        {size => (
+            <div style={{marginTop: 20}}>
+                <RadioGroupControl {...args} size={size} name={`gender_${size}`} defaultValue="male">
+                    <RadioControl value="male" label="Male" />
+                    <RadioControl value="female" label="Female" />
+                </RadioGroupControl>
+            </div>
+        )}
+    </VariantsStory>
+);
+
+<Preview>
+    <Story name="Sizes">{RadioGroupSizesStory.bind({})}</Story>
+</Preview>
+
+#### Messages
+
+<Preview>
+    <Story name="Messages">
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div style={{marginRight: 50}}>
+                <Paragraph level={2} style={{marginBottom: 20}}>
+                    Info
+                </Paragraph>
+                <RadioGroupControl name="gender_info">
+                    <RadioControl value="male" label="Male" />
+                    <RadioControl value="female" label="Female" info="Please select an option" />
+                </RadioGroupControl>
+            </div>
+            <div>
+                <Paragraph level={2} style={{marginBottom: 20}}>
+                    Error
+                </Paragraph>
+                <RadioGroupControl name="gender_error">
+                    <RadioControl value="male" label="Male" error />
+                    <RadioControl value="female" label="Female" error="This field is mandatory" />
+                </RadioGroupControl>
+            </div>
+        </div>
+    </Story>
+</Preview>
+
+#### Themes
+
+export const RadioGroupThemesStory = ({...args}) => (
+    <VariantsStory variants={COMPONENT_THEMES} style={{marginRight: 50}}>
+        {theme => (
+            <ThemeProvider as="div" theme={theme} style={{marginTop: 20}}>
+                <RadioGroupControl {...args} name={`gender_${theme}`} defaultValue="male">
+                    <RadioControl value="male" label="Male" />
+                    <RadioControl value="female" label="Female" />
+                </RadioGroupControl>
+            </ThemeProvider>
+        )}
+    </VariantsStory>
+);
+
+<Preview>
+    <Story name="Themes">{RadioGroupThemesStory.bind({})}</Story>
+</Preview>
+
+#### Variants
+
+export const RadioGroupVariantsStory = ({...args}) => (
+    <VariantsStory variants={[VARIANT_GRAY]} style={{marginRight: 50}}>
+        {variant => (
+            <div style={{marginTop: 20}}>
+                <RadioGroupControl {...args} variant={variant} name={`gender_${variant}`} defaultValue="male">
+                    <RadioControl value="male" label="Male" />
+                    <RadioControl value="female" label="Female" />
+                </RadioGroupControl>
+            </div>
+        )}
+    </VariantsStory>
+);
+
+<Preview>
+    <Story name="Variants">{RadioGroupVariantsStory.bind({})}</Story>
+</Preview>
+```
+
+Can you do the same for the following file and keep the same number of stories and wrap each story with preview tag and do not wrap the output with three ` and without jsx word:
+```
+FILE_TO_REPLACE
+```

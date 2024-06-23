@@ -1,0 +1,9 @@
+Remove the import from @storybook/addon-knobs.
+I changed the usage of @storybook/addon-knobs to @storybook/addon-controls by changing this file:
+{"file_path":"path/to/your/file/index.stories.mdx"}
+to this
+{"file_path":"path/to/your/new/file/index.stories.mdx""}
+Can you do the same for the following file and keep the same number of stories and wrap each story with preview tag and do not wrap the output with three ` and without jsx word:
+```
+FILE_TO_REPLACE
+```
