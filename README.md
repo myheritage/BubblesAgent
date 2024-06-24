@@ -70,3 +70,8 @@ npm run start Accessify
 
 You are welcome to contribute :)
 
+TODO list:
+- Add more AI models (Claude)
+- Add more code validators (Css validator, etc)
+- Use Husky(https://typicode.github.io/husky/get-started.html) to prevent the commit of secrets
+- Add UT for the code (can be added with bubbles agent itself)
