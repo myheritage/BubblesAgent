@@ -46,8 +46,8 @@ Add your own configuration under RefactorsActions in the config file.json
 For an example if you use the Accessify prompt to make the file accessible
 ```bash
  "Accessify": {
-            "description": "Make it to accessiable",
-            "prompt": "Make the following code to be fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
+            "description": "Make it accessiable",
+            "prompt": "Make the following code fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
             "targetDir": "/business/components/Accordion",
             "targetFilesExtensionRegex": ".*.react.js",
             "contentConditionRegex": "extends\\s+(React\\.)?(Pure)?Component\\s*{",
@@ -59,7 +59,7 @@ For an example if you use the Accessify prompt to make the file accessible
         },
 ```
 
-you will run it with the next command
+Run it with the next command
 ```bash
 npm run start Accessify
 ```
