@@ -13,7 +13,7 @@ npm i
 ```
 
 ## AI configuration
-Choose the AI model you want to use in the _config.json file_ under **openAiConfig->model_type+model_name**.
+Choose the AI model you want to use in the _config.json file_ under **modelConfig->model_type+model_name**.
 All the api keys should be in the .env file (Note: except for the **Vertex AI**, which should be in the vertex-ai-creds.json file)
 
 If you use **ChatGpt** insert your API key in the .env file under with the key **CHAT_GPT_API_KEY**

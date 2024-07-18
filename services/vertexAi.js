@@ -12,7 +12,7 @@ const vertex_ai = new VertexAI({
 
 // Instantiate the models
 const generativeModel = vertex_ai.preview?.getGenerativeModel({
-  model: config?.openAiConfig?.model_name,
+  model: config?.modelConfig?.model_name,
 });
 
 async function generateContent(contents) {

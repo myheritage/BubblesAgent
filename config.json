@@ -1,5 +1,5 @@
 {
-  "openAiConfig": {
+  "modelConfig": {
     "rolePrompt": "You are a senior frontend developer. Answer only with a complete file content and code. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including the required changes.\n\n",
     "model_type": "ClaudeAi",
     "model_name": "claude-3-5-sonnet-20240620"

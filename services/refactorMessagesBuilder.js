@@ -3,13 +3,13 @@ const {createChatCompletion} = require('./openAi');
 const {generateContent} = require('./vertexAi');
 const config = require("../config.json");
 const {generateClaudeContent} = require("./claudeAi");
+const ModelAdapter = require('./modelAdapter');
 
 class RefactorMessagesBuilder {
     constructor(refactorConfig) {
         this.messages = [];
         this.refactorConfig = refactorConfig;
-        this.model_type = config.model_type;
-        this.model_name = config.model_name;
+        this.modelAdapter = new ModelAdapter();
     }
 
     async askFirstQuestion(fileContent) {
@@ -23,14 +23,15 @@ class RefactorMessagesBuilder {
     }
 
     async _askAI(messages) {
-        const answer = this._modelFactory(messages)//await createChatCompletion(messages);
+        const modelFunction = this.modelAdapter.modelFactory();
+        const answer = modelFunction(messages);
         this._addMessage("assistant", answer);
         return answer;
     }
 
     _buildInitialMessages(fileContent) {
         const {prompt, advanceOptions} = this.refactorConfig;
-        const rolePrompt = config.openAiConfig.rolePrompt;
+        const rolePrompt = config.modelConfig.rolePrompt;
         const userPrompt = rolePrompt + this._buildInitialPrompt(prompt, fileContent, advanceOptions)
         this._addMessage("user" , userPrompt);
         return this.messages;
@@ -39,13 +40,7 @@ class RefactorMessagesBuilder {
     _addMessage(role, text) {
         let msg = {};
 
-        const modelTypes = {
-            "ChatGPT": (role, text) => ({role: role, content: text}),
-            "Vertex": (role, text) => ({role: role, parts: [{text: text}]}),
-            "ClaudeAi": (role, text) => ({role: role, content: JSON.stringify(text)}),
-            // Add more types as needed
-        };
-        msg = modelTypes[config.openAiConfig.model_type](role, text);
+        msg = this.modelAdapter.addMessage(role, text);
         this.messages.push(msg);
     }
 
@@ -59,7 +54,7 @@ class RefactorMessagesBuilder {
         };
 
         // Get the function based on the model_type
-        const modelFunction = modelTypes[config.openAiConfig.model_type];
+        const modelFunction = modelTypes[config.modelConfig.model_type];
 
         // If the function exists, call it with the config
         if (modelFunction) {
