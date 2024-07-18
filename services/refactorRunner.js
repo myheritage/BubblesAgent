@@ -21,7 +21,7 @@ function replaceFileExtention(filePath, newExtention) {
 async function refactorFile({filePath, fileContent, refactorConfig, codeValidatorsConfig}) {
     const {outputFileExtension, codeValidators} = refactorConfig.advanceOptions ?? {};
     console.log('Refactoring file: ' + filePath);
-    const refactorMessagesBuilder = new RefactorMessagesBuilder(refactorConfig, refactorConfig.useVertexAI);
+    const refactorMessagesBuilder = new RefactorMessagesBuilder(refactorConfig);
     let answer = await refactorMessagesBuilder.askFirstQuestion(fileContent);
 
     if(codeValidators && codeValidators.length > 0) {

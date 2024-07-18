@@ -1,17 +1,18 @@
 const { VertexAI } = require("@google-cloud/vertexai");
 const credentials = require("./vertex-ai-creds.json");
 const config = require("../config.json");
+require('dotenv').config();
 
 // Initialize Vertex with your Cloud project and location
 const vertex_ai = new VertexAI({
-  project: "<YOUR_PROJECT>",
-  location: "<YOUR_LOCATION>",
+  project: process.env['VERTEX_YOUR_PROJECT'],
+  location: process.env['VERTEX_YOUR_LOCATION'],
   googleAuthOptions: { credentials },
 });
 
 // Instantiate the models
-const generativeModel = vertex_ai.preview.getGenerativeModel({
-  model: config.vertexAiConfig.model,
+const generativeModel = vertex_ai.preview?.getGenerativeModel({
+  model: config?.openAiConfig?.model_name,
 });
 
 async function generateContent(contents) {
@@ -21,4 +22,3 @@ async function generateContent(contents) {
 }
 
 module.exports = { generateContent };
-

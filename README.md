@@ -13,10 +13,16 @@ npm i
 ```
 
 ## AI configuration
-If you use ChatGpt insert your API key in the _config file_ under **openAiConfig**
+Choose the AI model you want to use in the _config.json file_ under **openAiConfig->model_type+model_name**.
+All the api keys should be in the .env file (Note: except for the **Vertex AI**, which should be in the vertex-ai-creds.json file)
 
-If you are using Vertex AI, choose your model in the _config file_ under **vertexAiConfig**
+If you use **ChatGpt** insert your API key in the .env file under with the key **CHAT_GPT_API_KEY**
+
+If you are using **Vertex AI**, choose your model in the _config.json file_ under **vertexAiConfig**
 And insert the creds in the _vertex-ai-creds.json file_ as well as project and location in _vertexAi_ file
+
+For **Claude ai** (takes more time in avg) - add the api key in the _.env file_ under the key **ANTHROPIC_API_KEY**
+
 ```bash
 ## Configuration
 Add your own configuration under RefactorsActions in the config file.json
@@ -71,7 +77,7 @@ npm run start Accessify
 You are welcome to contribute :)
 
 TODO list:
-- Add more AI models (Claude)
+- Add more AI models (Claude) - Done
 - Add more code validators (Css validator, etc)
 - Use Husky(https://typicode.github.io/husky/get-started.html) to prevent the commit of secrets
 - Add UT for the code (can be added with bubbles agent itself)

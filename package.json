@@ -4,7 +4,8 @@
   "description": "An agent that uses OpenAI's api to generate responses to user input based on config and prompt",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest"
   },
   "author": "MyHeritage",
   "repository": {
@@ -20,7 +21,9 @@
     "node": ">=20.14.0"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
     "@google-cloud/vertexai": "^1.0.0",
+    "dotenv": "^16.4.5",
     "google-auth-library": "^9.7.0",
     "openai": "^3.3.0"
   },

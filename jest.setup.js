@@ -1,0 +1,1 @@
+jest.setTimeout(30000); // Set a timeout for all tests
