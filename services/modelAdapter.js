@@ -1,11 +1,10 @@
-const config = require("../config.json");
 const {createChatCompletion} = require("./openAi");
 const {generateContent} = require("./vertexAi");
 const {generateClaudeContent} = require("./claudeAi");
 
-export default class ModelAdapter {
-    constructor() {
-        this.model_type = config.model_type;
+class ModelAdapter {
+    constructor(model_type) {
+        this.model_type = model_type;
     }
 
     addMessage(role, text) {
@@ -15,7 +14,7 @@ export default class ModelAdapter {
             "ClaudeAi": (role, text) => ({role: role, content: JSON.stringify(text)}),
             // Add more types as needed
         };
-        return modelTypes[config.modelConfig.model_type](role, text);
+        return modelTypes[this.model_type](role, text);
     }
 
     modelFactory() {
@@ -28,13 +27,15 @@ export default class ModelAdapter {
         };
 
         // Get the function based on the model_type
-        const modelFunction = modelTypes[config.modelConfig.model_type];
+        const modelFunction = modelTypes[this.model_type];
 
         // If the function exists, call it with the config
         if (modelFunction) {
             return modelFunction;
         } else {
-            throw new Error(`Unknown model type: ${config.model_type}`);
+            throw new Error(`Unknown model type: ${this.model_type}`);
         }
     }
 }
+
+module.exports = {ModelAdapter};

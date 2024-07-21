@@ -1,8 +1,8 @@
 {
   "modelConfig": {
     "rolePrompt": "You are a senior frontend developer. Answer only with a complete file content and code. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including the required changes.\n\n",
-    "model_type": "ClaudeAi",
-    "model_name": "claude-3-5-sonnet-20240620"
+    "model_type": "ChatGPT",
+    "model_name": "gpt-4o"
   },
   "ValidatorsConfig": {
     "babelCompile": {
@@ -33,8 +33,8 @@
     "Accessify-Html": {
       "description": "Make this html file accessible",
       "prompt": "Make the following code to be fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
-      "targetDir": "/Path/to/your/working/directory",
-      "targetFilesExtensionRegex": ".*.html",
+      "targetDir": "/Volumes/mhdev/working-copies/web/trunk/htdocs/FP/Assets/Templates/FamilyHome/AddPeopleQuickly/",
+      "targetFilesExtensionRegex": "FormAddPeopleQuicklyTemplate.html",
       "contentConditionRegex": ".*"
     },
     "Knobs": {

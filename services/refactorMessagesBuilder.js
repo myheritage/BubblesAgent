@@ -3,13 +3,13 @@ const {createChatCompletion} = require('./openAi');
 const {generateContent} = require('./vertexAi');
 const config = require("../config.json");
 const {generateClaudeContent} = require("./claudeAi");
-const ModelAdapter = require('./modelAdapter');
+const {ModelAdapter} = require('./modelAdapter');
 
 class RefactorMessagesBuilder {
     constructor(refactorConfig) {
         this.messages = [];
         this.refactorConfig = refactorConfig;
-        this.modelAdapter = new ModelAdapter();
+        this.modelAdapter = new ModelAdapter(config.modelConfig.model_type);
     }
 
     async askFirstQuestion(fileContent) {
