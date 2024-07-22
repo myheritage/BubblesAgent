@@ -1,13 +1,8 @@
 {
-  "openAiConfig": {
-    "apiKey": "<YOUR_OPENAI_API_KEY>",
+  "modelConfig": {
     "rolePrompt": "You are a senior frontend developer. Answer only with a complete file content and code. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including the required changes.\n\n",
-    "chatConfig": {
-      "model": "gpt-4o"
-    }
-  },
-  "vertexAiConfig": {
-    "model": "gemini-1.5-pro-preview-0409"
+    "model_type": "ChatGPT",
+    "model_name": "gpt-4o"
   },
   "ValidatorsConfig": {
     "babelCompile": {
@@ -24,7 +19,8 @@
       "targetDir": "the full path of the directory where the refactoring should be done recursively",
       "targetFilesExtensionRegex": "regex - which files to work on, like '.*.test.js'",
       "contentConditionRegex": "regex - which content should be in the file in order to refactor, like '.*'. Another example: 'extends\\s+(React\\.)?(Pure)?Component\\s*{'",
-      "useVertexAI": "true/false - if true, will use Vertex AI to generate the refactoring",
+      "model_type": "ChatGPT/Vertex/ClaudeAi which model to use from the list",
+      "model_name": "gpt-4o/gemini-1.5-pro-preview-0409/claude-3-5-sonnet-20240620 which model name to use from the list",
       "advanceOptions": {
         "outputFileExtension": "optional - when given, the result of the refactoring will be saved to the same file name and given file extention, like test.js",
         "useFilePath": "true/false - if true, will search for {\"file_path\":\"/Path/of/file.js\"}",
@@ -37,8 +33,8 @@
     "Accessify-Html": {
       "description": "Make this html file accessible",
       "prompt": "Make the following code to be fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
-      "targetDir": "/Path/to/your/working/directory",
-      "targetFilesExtensionRegex": ".*.html",
+      "targetDir": "/Volumes/mhdev/working-copies/web/trunk/htdocs/FP/Assets/Templates/FamilyHome/AddPeopleQuickly/",
+      "targetFilesExtensionRegex": "FormAddPeopleQuicklyTemplate.html",
       "contentConditionRegex": ".*"
     },
     "Knobs": {
