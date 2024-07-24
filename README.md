@@ -2,7 +2,7 @@
 
 <img src="images/logo.png" width="150px" height="150px" alt="Project logo"/>
 
-Apply your GPT/Gemini prompt to a mass of code files in one shot.
+Apply your GPT/Gemini/Claude prompt to a mass of code files in one shot.
 
 ## Installation
 Clone the repository
