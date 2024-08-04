@@ -1,6 +1,6 @@
 module.exports = {
     testEnvironment: 'node',
-    roots: ['<rootDir>/tests'],
+    roots: ['<rootDir>'],
     moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
