@@ -4,7 +4,7 @@ const {RefactorMessagesBuilder} = require('./refactorMessagesBuilder');
 const {validateCodeContent} = require('../codeValidators');
 
 async function writeOutputFile(path, fileContent) {
-    await fs.writeFile(path, fileContent, console.error);
+    await fs.writeFile(path, fileContent, ()=>{});
 }
 
 function replaceFileExtention(filePath, newExtention) {
