@@ -1,0 +1,92 @@
+{
+  "modelConfig": {
+    "rolePrompt": "You are a senior frontend developer. Answer only with a complete file content and code. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including the required changes.\n\n",
+    "model_type": "ChatGPT",
+    "model_name": "gpt-4o"
+  },
+  "ValidatorsConfig": {
+    "babelCompile": {
+      "maxRetries": 3
+    },
+    "jestRunner": {
+      "maxRetries": 3
+    }
+  },
+  "RefactorsActions": {
+    "HOW_TO_CONFIG": {
+      "description": "description of the refactoring task for readability",
+      "prompt": "string|file path - Prompt string to give insturctions for refactoring OR file path to a .txt file with long prompt.",
+      "targetDir": "the full path of the directory where the refactoring should be done recursively",
+      "targetFilesExtensionRegex": "regex - which files to work on, like '.*.test.js'",
+      "contentConditionRegex": "regex - which content should be in the file in order to refactor, like '.*'. Another example: 'extends\\s+(React\\.)?(Pure)?Component\\s*{'",
+      "model_type": "ChatGPT/Vertex/ClaudeAi which model to use from the list",
+      "model_name": "gpt-4o/gemini-1.5-pro-preview-0409/claude-3-5-sonnet-20240620 which model name to use from the list",
+      "advanceOptions": {
+        "outputFileExtension": "optional - when given, the result of the refactoring will be saved to the same file name and given file extention, like test.js",
+        "useFilePath": "true/false - if true, will search for {\"file_path\":\"/Path/of/file.js\"}",
+        "codeValidators": [
+          "babelCompile - optional - validate the refactor is compiled by JS babel",
+          "JestRunner - optional - validate the refactor is tested by Jest and the unit test is green"
+        ]
+      }
+    },
+    "Accessify-Html": {
+      "description": "Make this html file accessible",
+      "prompt": "Make the following code to be fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
+      "targetDir": "/Path/to/your/working/directory",
+      "targetFilesExtensionRegex": "FormAddPeopleQuicklyTemplate.html",
+      "contentConditionRegex": ".*"
+    },
+    "Knobs": {
+      "description": "Migrate from knobs to controls",
+      "prompt": "./prompts/Knobs/NewKnobsPrompt.txt",
+      "targetDir": "path/to/your/working/directory",
+      "targetFilesExtensionRegex": ".*.mdx",
+      "contentConditionRegex": "storybook/addon-knobs"
+    },
+    "KnobsMagic": {
+      "description": "Migrate to nobs",
+      "prompt": "./MagicNobsPrompt.txt",
+      "targetDir": "/Path/to/your/working/directory",
+      "targetFilesExtensionRegex": ".*.mdx",
+      "contentConditionRegex": "",
+      "advanceOptions": {
+        "useFilePath": true
+      }
+    },
+    "ReactClassToFunc": {
+      "description": "React Class to functional React Component",
+      "prompt": "Refactor the following code to a React functional component according to React best practices. Delete the `defaultProps` property and move all props from propTypes and default values to be passed as default arguments to the function. Be compliant with the `react` and `react-hooks` ESLint rules. Preserve `@name` and `@module` in the comments.",
+      "targetDir": "/Path/to/your/working/directory",
+      "targetFilesExtensionRegex": ".*.react.js",
+      "contentConditionRegex": "extends\\s+(React\\.)?(Pure)?Component\\s*{",
+      "advanceOptions": {
+        "codeValidators": [
+          "babelCompile"
+        ]
+      }
+    },
+    "RemovejQuery": {
+      "description": "Get rid of jQuery",
+      "prompt": "Refactor the following code, get rid of the use of the jQuery library. Use native browser API. Aswume the code is running in a modern browser.",
+      "targetDir": "/Path/to/your/working/directory",
+      "targetFilesExtensionRegex": "signupPopupDeprecated.js",
+      "contentConditionRegex": "jQuery",
+      "advanceOptions": {
+        "codeValidators": [
+          "babelCompile"
+        ]
+      }
+    },
+    "RemoveUnderscore": {
+      "description": "Get rid of underscore",
+      "prompt": "Refactor the following code, get rid of the use of the underscore library in the most concise way possible. When refactoring, use simple loops whenever possible.",
+      "targetDir": "/Path/to/your/working/directory",
+      "targetFilesExtensionRegex": ".*.js",
+      "contentConditionRegex": "import _ from 'underscore';",
+      "codeValidators": [
+        "babelCompile"
+      ]
+    }
+  }
+}
