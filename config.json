@@ -33,7 +33,7 @@
     "Accessify-Html": {
       "description": "Make this html file accessible",
       "prompt": "Make the following code to be fully accessible.\n Make sure to add the proper aria attributes and roles.\n Follow the WAI-ARIA best practices and WCAG 2 A and AA Checklist.",
-      "targetDir": "/Volumes/mhdev/working-copies/web/trunk/htdocs/FP/Assets/Templates/FamilyHome/AddPeopleQuickly/",
+      "targetDir": "/Path/to/your/working/directory",
       "targetFilesExtensionRegex": "FormAddPeopleQuicklyTemplate.html",
       "contentConditionRegex": ".*"
     },
