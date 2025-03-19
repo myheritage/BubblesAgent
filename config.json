@@ -1,6 +1,6 @@
 {
   "modelConfig": {
-    "rolePrompt": "You are a senior frontend developer. Answer only with a complete file content and code. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including the required changes.\n\n",
+    "rolePrompt": "You are a senior software engineer. Answer only with a complete file content and code, unless there are no changes needed to be applied. In such case reply with the following 2 words without any encoding or escaping: No Changes. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including only the required changes.\n\n",
     "model_type": "ChatGPT",
     "model_name": "gpt-4o"
   },
@@ -15,7 +15,7 @@
   "RefactorsActions": {
     "HOW_TO_CONFIG": {
       "description": "description of the refactoring task for readability",
-      "prompt": "string|file path - Prompt string to give insturctions for refactoring OR file path to a .txt file with long prompt.",
+      "prompt": "string|file path - Prompt string to give instructions for refactoring OR file path to a .txt file with long prompt.",
       "targetDir": "the full path of the directory where the refactoring should be done recursively",
       "targetFilesExtensionRegex": "regex - which files to work on, like '.*.test.js'",
       "contentConditionRegex": "regex - which content should be in the file in order to refactor, like '.*'. Another example: 'extends\\s+(React\\.)?(Pure)?Component\\s*{'",
@@ -68,7 +68,7 @@
     },
     "RemovejQuery": {
       "description": "Get rid of jQuery",
-      "prompt": "Refactor the following code, get rid of the use of the jQuery library. Use native browser API. Aswume the code is running in a modern browser.",
+      "prompt": "Refactor the following code, get rid of the use of the jQuery library. Use native browser API. Assume the code is running in a modern browser.",
       "targetDir": "/Path/to/your/working/directory",
       "targetFilesExtensionRegex": "signupPopupDeprecated.js",
       "contentConditionRegex": "jQuery",
