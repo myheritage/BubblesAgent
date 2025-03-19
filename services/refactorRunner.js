@@ -20,7 +20,7 @@ function replaceFileExtention(filePath, newExtention) {
 
 async function refactorFile({filePath, fileContent, refactorConfig, codeValidatorsConfig, progressMessage}) {
     const {outputFileExtension, codeValidators} = refactorConfig.advanceOptions ?? {};
-    console.log('Refactoring file: ' + filePath + (progressMessage ? (' ' + progressMessage) : ''));
+    console.log('Processing file: ' + filePath + (progressMessage ? (' ' + progressMessage) : ''));
     const refactorMessagesBuilder = new RefactorMessagesBuilder(refactorConfig);
     let answer = await refactorMessagesBuilder.askFirstQuestion(fileContent);
 
