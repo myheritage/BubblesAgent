@@ -2,7 +2,7 @@
   "modelConfig": {
     "rolePrompt": "You are a senior software engineer. Answer only with a complete file content and code, unless there are no changes needed to be applied. In such case reply with the following 2 words without any encoding or escaping: No Changes. DO NOT explain, DO NOT add details, DO NOT apologize. DO NOT add the file type at the beginning of the answer. DO NOT wrap the answer with \"```\" or \"```jsx\" or \"```html\". Reply with the same file content you get as input, including only the required changes.\n\n",
     "model_type": "ChatGPT",
-    "model_name": "gpt-4o"
+    "model_name": "o3-mini"
   },
   "ValidatorsConfig": {
     "babelCompile": {
@@ -15,12 +15,13 @@
   "RefactorsActions": {
     "HOW_TO_CONFIG": {
       "description": "description of the refactoring task for readability",
-      "prompt": "string|file path - Prompt string to give instructions for refactoring OR file path to a .txt file with long prompt.",
+      "prompt": "string|file path - Prompt string to give instructions for refactoring OR file path to a text file with long prompt.",
       "targetDir": "the full path of the directory where the refactoring should be done recursively",
       "targetFilesExtensionRegex": "regex - which files to work on, like '.*.test.js'",
       "contentConditionRegex": "regex - which content should be in the file in order to refactor, like '.*'. Another example: 'extends\\s+(React\\.)?(Pure)?Component\\s*{'",
       "model_type": "ChatGPT/Vertex/ClaudeAi which model to use from the list",
       "model_name": "gpt-4o/gemini-1.5-pro-preview-0409/claude-3-5-sonnet-20240620 which model name to use from the list",
+      "concurrency": "int - number of LLM requests allowed to be executed in parallel, default = 1",
       "advanceOptions": {
         "outputFileExtension": "optional - when given, the result of the refactoring will be saved to the same file name and given file extention, like test.js",
         "useFilePath": "true/false - if true, will search for {\"file_path\":\"/Path/of/file.js\"}",

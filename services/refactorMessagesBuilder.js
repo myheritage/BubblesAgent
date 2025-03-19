@@ -4,6 +4,7 @@ const {generateContent} = require('./vertexAi');
 const config = require("../config.json");
 const {generateClaudeContent} = require("./claudeAi");
 const {ModelAdapter} = require('./modelAdapter');
+const {isAbsolute} = require("node:path");
 
 class RefactorMessagesBuilder {
     constructor(refactorConfig) {
@@ -65,8 +66,12 @@ class RefactorMessagesBuilder {
     }
 
     _buildInitialPrompt(prompt, fileContent, advanceOptions) {
+        function isFilePath(str) {
+            return isAbsolute(str) || str.startsWith('./') || str.startsWith('../');
+        }
+
         let userPrompt = prompt;
-        if (prompt.includes(".txt")) {
+        if (isFilePath(prompt)) {
             userPrompt = fs.readFileSync(prompt, 'utf8', console.error);
         }
 

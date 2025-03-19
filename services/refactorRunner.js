@@ -18,9 +18,9 @@ function replaceFileExtention(filePath, newExtention) {
     return path.join(directory, newFileName);
 }
 
-async function refactorFile({filePath, fileContent, refactorConfig, codeValidatorsConfig}) {
+async function refactorFile({filePath, fileContent, refactorConfig, codeValidatorsConfig, progressMessage}) {
     const {outputFileExtension, codeValidators} = refactorConfig.advanceOptions ?? {};
-    console.log('Refactoring file: ' + filePath);
+    console.log('Refactoring file: ' + filePath + (progressMessage ? (' ' + progressMessage) : ''));
     const refactorMessagesBuilder = new RefactorMessagesBuilder(refactorConfig);
     let answer = await refactorMessagesBuilder.askFirstQuestion(fileContent);
 
@@ -43,9 +43,11 @@ async function refactorFile({filePath, fileContent, refactorConfig, codeValidato
         }
     }
 
-    const outputFilePath = outputFileExtension ? replaceFileExtention(filePath, outputFileExtension) : filePath;
-    answer && await writeOutputFile(outputFilePath, answer);
-    console.log('Refactoring done!');
+    if (answer && answer !== "No Changes") {
+        const outputFilePath = outputFileExtension ? replaceFileExtention(filePath, outputFileExtension) : filePath;
+        await writeOutputFile(outputFilePath, answer);
+        console.log(`Refactoring of ${filePath} is done!`);
+    }
 }
 
 module.exports = {
