@@ -1,4 +1,4 @@
-# Bubbles Agent 🫧
+# Bubbles Agent 
 
 <p align="center">
   <img src="images/logo.png" width="150px" height="150px" alt="Bubbles Agent Logo - AI applying prompts to code"/>
@@ -15,19 +15,16 @@ Manually refactoring large codebases is time-consuming and error-prone. Bubbles 
 
 Whether you need to modernize legacy code, enforce new standards, migrate APIs, or perform other large-scale modifications, Bubbles Agent provides a flexible framework to apply AI intelligence across your project.
 
-**(Recommended: Insert a GIF/Screencast here showing Bubbles Agent in action - e.g., running a command and showing file changes or a diff)**
-_Example: `![Bubbles Agent Demo](link/to/your/demo.gif)`_
+## Key Features
 
-## ✨ Key Features
-
-* 🤖 **Multi-LLM Support:** Works with **GPT (OpenAI)**, **Gemini (Google Vertex AI)**, and **Claude (Anthropic)**.
-* <0xF0><0x9F><0x93><0x82> **Batch Processing:** Apply prompts recursively to all matching files within a target directory.
-* <0xF0><0x9F><0x94><0x84> **Targeted Refactoring:** Filter files by extension (`targetFilesExtensionRegex`) and content (`contentConditionRegex`).
-* <0xF0><0x9F><0x94><0xA7> **Flexible Prompts:** Use direct prompt strings or reference longer prompts from `.txt` files.
-* <0xE2><0x9C><0x85> **Code Validation:** Optionally validate AI-generated code using checks like Babel compilation or Jest tests (`codeValidators`).
-* 📄 **Output Control:** Specify a different file extension for refactored output (`outputFileExtension`).
-* 🧩 **Example-Based Prompting:** (Optional) Provide `diff` examples or file paths to guide the LLM (`examples`).
-* <0xF0><0x9F><0xA7><0xAE> **Configurable:** Define multiple refactoring tasks within a central `config.json` file.
+* **Multi-LLM Support:** Works with **GPT (OpenAI)**, **Gemini (Google Vertex AI)**, and **Claude (Anthropic)**.
+* **Batch Processing:** Apply prompts recursively to all matching files within a target directory.
+* **Targeted Refactoring:** Filter files by extension (`targetFilesExtensionRegex`) and content (`contentConditionRegex`).
+* **Flexible Prompts:** Use direct prompt strings or reference longer prompts from `.txt` files.
+* **Code Validation:** Optionally validate AI-generated code using checks like Babel compilation or Jest tests (`codeValidators`).
+* **Output Control:** Specify a different file extension for refactored output (`outputFileExtension`).
+* **Example-Based Prompting:** (Optional) Provide `diff` examples or file paths to guide the LLM (`examples`).
+* **Configurable:** Define multiple refactoring tasks within a central `config.json` file.
 
 ##  Prerequisites
 
