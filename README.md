@@ -28,8 +28,7 @@ Whether you need to modernize legacy code, enforce new standards, migrate APIs, 
 
 ##  Prerequisites
 
-* Node.js (specify version range if known, e.g., v18+)
-* npm (comes with Node.js)
+* Node.js (Version 22 or higher recommended)
 * API Keys for the desired AI services (OpenAI, Google Cloud/Vertex AI, Anthropic)
 
 ## 💾 Installation
