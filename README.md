@@ -36,7 +36,7 @@ Whether you need to modernize legacy code, enforce new standards, migrate APIs, 
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/myheritage/BubblesAgent.git](https://www.google.com/search?q=https://github.com/myheritage/BubblesAgent.git)
+    git clone https://github.com/myheritage/BubblesAgent.git
     cd BubblesAgent
     ```
 2.  Install dependencies:
